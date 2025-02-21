@@ -17,12 +17,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v2
               with:
-                  python-version: "3.8"
+                  python-version: "3.13"
 
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
-                  pip install jupyter nbconvert wandb
+                  pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn dotenv-python scipy
 
             - name: Configure wandb
               env:
@@ -34,9 +34,9 @@ jobs:
               run: |
                   jupyter nbconvert --to notebook --execute lab_5.ipynb --output executed_notebook.ipynb
 
-                  - name: Log metrics and images to wandb
-                  run: |
-                    python -c "
+            - name: Log metrics and images to wandb
+              run: |
+                  python -c "
                       import wandb
                       wandb.init(project='your_project_name')
                       wandb.save('executed_notebook.ipynb')
