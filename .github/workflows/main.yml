@@ -11,6 +11,6 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install numpy pandas scikit-learn cv2
+          pip install numpy pandas scikit-learn opencv-python
       - name: Run test script
         run: python distance_classification/test.py
