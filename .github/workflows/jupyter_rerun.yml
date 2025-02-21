@@ -1,0 +1,35 @@
+name: Rerun Jupyter Notebook
+
+on:
+  push:
+    paths:
+      - '**/*.ipynb'
+      - '**/*.py'
+
+jobs:
+  rerun-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jupyter nbconvert wandb
+
+    - name: Configure wandb
+      env:
+        WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+      run: |
+        wandb login $WANDB_API_KEY
+
+    - name: Execute Jupyter Notebook
+      run: |
+        jupyter nbconvert --to notebook --execute path/to/your_notebook.ipynb --output executed_notebook.ipynb
