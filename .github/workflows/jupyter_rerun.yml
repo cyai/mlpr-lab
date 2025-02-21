@@ -32,4 +32,4 @@ jobs:
 
     - name: Execute Jupyter Notebook
       run: |
-        jupyter nbconvert --to notebook --execute path/to/your_notebook.ipynb --output executed_notebook.ipynb
+        jupyter nbconvert --to notebook --execute Lab 5-Spring 2025.ipynb --output executed_notebook.ipynb
