@@ -24,6 +24,11 @@ jobs:
                   python -m pip install --upgrade pip
                   pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn python-dotenv scipy opencv-python-headless
 
+            - name: Download haarcascade_frontalface_default.xml
+              run: |
+                  mkdir -p data
+                  wget -O data/haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
+                  
             - name: Configure wandb
               env:
                   WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
