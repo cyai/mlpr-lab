@@ -45,8 +45,6 @@ jobs:
                   jupyter nbconvert --to notebook --execute "lab_5.ipynb" --output executed_notebook.ipynb --ExecutePreprocessor.kernel_name=nbkernel --debug
             - name: Log metrics and images to wandb
               run: |
-                  python -c "
-                      import wandb
-                      wandb.init(project='distance_classification')
-                      wandb.save('executed_notebook.ipynb')
-                      "
+                  python -c "import wandb
+                  wandb.init(project='distance_classification')
+                  wandb.save('executed_notebook.ipynb')"
