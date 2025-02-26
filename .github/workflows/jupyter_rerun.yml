@@ -5,6 +5,7 @@ on:
         paths:
             - "**/*.ipynb"
             - "**/*.py"
+            - ".github/workflows/jupyter_rerun.yml"
 
 jobs:
     rerun-notebook:
@@ -28,7 +29,7 @@ jobs:
               run: |
                   mkdir -p data
                   wget -O data/haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
-                  
+
             - name: Configure wandb
               env:
                   WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
