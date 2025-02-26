@@ -33,7 +33,7 @@ jobs:
             - name: Execute Jupyter Notebook
               run: |
                   python -m ipykernel install --user --name=nbkernel
-                  jupyter nbconvert --to notebook --execute "Lab 5-Spring 2025.ipynb" --output executed_notebook.ipynb --ExecutePreprocessor.kernel_name=nbkernel
+                  jupyter nbconvert --to notebook --execute "lab_5.ipynb" --output executed_notebook.ipynb --ExecutePreprocessor.kernel_name=nbkernel
 
             - name: Log metrics and images to wandb
               run: |
