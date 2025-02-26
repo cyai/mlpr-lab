@@ -22,7 +22,7 @@ jobs:
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
-                  pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn dotenv-python scipy
+                  pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn dotenv-python scipy opencv-python-headless
 
             - name: Configure wandb
               env:
@@ -38,6 +38,6 @@ jobs:
               run: |
                   python -c "
                       import wandb
-                      wandb.init(project='your_project_name')
+                      wandb.init(project='distance_classification')
                       wandb.save('executed_notebook.ipynb')
                       "
