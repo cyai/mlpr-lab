@@ -17,12 +17,12 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v2
               with:
-                  python-version: "3.8"
+                  python-version: "3.13"
 
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
-                  pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn dotenv-python scipy opencv-python-headless
+                  pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn python-dotenv scipy opencv-python-headless
 
             - name: Configure wandb
               env:
@@ -32,7 +32,8 @@ jobs:
 
             - name: Execute Jupyter Notebook
               run: |
-                  jupyter nbconvert --to notebook --execute lab_5.ipynb --output executed_notebook.ipynb
+                  python -m ipykernel install --user --name=nbkernel
+                  jupyter nbconvert --to notebook --execute "Lab 5-Spring 2025.ipynb" --output executed_notebook.ipynb --ExecutePreprocessor.kernel_name=nbkernel
 
             - name: Log metrics and images to wandb
               run: |
